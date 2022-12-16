@@ -10,13 +10,15 @@ import CreatePost from "./components/CreatePost";
 function App() {
   return (
     <Router>
-      <Navbar />
-      <br />
-      <Routes>
-        <Route path="/posts" element={<Posts />} />
-        <Route path="/createpost" element={<CreatePost />} />
-        <Route path="/newuser" element={<CreateUser />} />
-      </Routes>
+      <div className="container">
+        <Navbar />
+        <br />
+        <Routes>
+          <Route path="/posts" element={<Posts />} />
+          <Route path="/createpost" element={<CreatePost />} />
+          <Route path="/newuser" element={<CreateUser />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
