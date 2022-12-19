@@ -1,7 +1,13 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function CreatePost() {
+  const [title, setTitle] = useState("");
+
+  const updateTitle = (e) => {
+    setTitle(e.target.value);
+    console.log(title);
+  };
+
   return (
     <form>
       <h1>Create New Post</h1>
@@ -10,6 +16,7 @@ export default function CreatePost() {
           Title
         </label>
         <input
+          onChange={updateTitle}
           type="text"
           class="form-control"
           id="createPostTitle"
