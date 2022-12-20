@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 export default function CreatePost() {
   const [newPost, setNewPost] = useState({
@@ -10,6 +11,10 @@ export default function CreatePost() {
   const submitPost = (e) => {
     e.preventDefault();
     console.log(newPost); //should send to api instead of console log
+    axios
+      .post("http://localhost:4000/posts/create", newPost)
+      .then((res) => console.log(res.data));
+    window.location = "/posts";
   };
 
   return (
