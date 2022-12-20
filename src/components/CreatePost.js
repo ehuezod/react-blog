@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 
 export default function CreatePost() {
-  const [title, setTitle] = useState("");
+  const [newPost, setNewPost] = useState({
+    title: "",
+    postText: "",
+    creatorUsername: "ehuezo",
+  });
 
-  const updateTitle = (e) => {
-    setTitle(e.target.value);
-    console.log(title);
+  const submitPost = (e) => {
+    e.preventDefault();
+    console.log(newPost); //should send to api instead of console log
   };
 
   return (
@@ -16,7 +20,8 @@ export default function CreatePost() {
           Title
         </label>
         <input
-          onChange={updateTitle}
+          value={newPost.title}
+          onChange={(e) => setNewPost({ ...newPost, title: e.target.value })} // uses spead operator to keep all what was done before
           type="text"
           class="form-control"
           id="createPostTitle"
@@ -27,10 +32,16 @@ export default function CreatePost() {
         <label for="createPostContent" class="form-label">
           Type whatever you want!
         </label>
-        <textarea type="password" class="form-control" id="createPostContent" />
+        <textarea
+          value={newPost.postText}
+          type="password"
+          class="form-control"
+          id="createPostContent"
+          onChange={(e) => setNewPost({ ...newPost, postText: e.target.value })} // assigns current value to the object
+        />
       </div>
 
-      <button type="submit" class="btn btn-primary">
+      <button type="submit" class="btn btn-primary" onClick={submitPost}>
         Submit
       </button>
     </form>
