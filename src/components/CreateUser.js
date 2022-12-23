@@ -46,7 +46,7 @@ export default function CreateUser() {
 
       <div class="mb-3">
         <label for="registerUsername" class="form-label">
-          UserName
+          Username
         </label>
         <input
           type="text"
