@@ -5,7 +5,7 @@ export default function CreatePost() {
   const [newPost, setNewPost] = useState({
     title: "",
     postText: "",
-    creatorUsername: "ehuezo",
+    creatorUsername: window.localStorage.getItem("currentUser"),
   });
 
   const submitPost = (e) => {

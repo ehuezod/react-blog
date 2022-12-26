@@ -7,6 +7,22 @@ router.route("/").get((req, res) => {
         .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route("/validate").post((req, res) => {
+    User.find({
+            username: req.body.username,
+            password: req.body.password,
+        })
+        .then((users) => {
+            // checks if the mongo query has 1 or more users, and sends boolean response
+            if (users.length > 0) {
+                res.send(true);
+            } else {
+                res.send(false);
+            }
+        })
+        .catch((err) => res.status(400).json("Error: " + err));
+});
+
 router.route("/add").post((req, res) => {
     const username = req.body.username;
     const email = req.body.email;

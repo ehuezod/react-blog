@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Posts from "./components/Posts";
 import CreateUser from "./components/CreateUser";
 import CreatePost from "./components/CreatePost";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
           <Route path="/posts" element={<Posts />} />
           <Route path="/createpost" element={<CreatePost />} />
           <Route path="/newuser" element={<CreateUser />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" />
         </Routes>
       </div>
     </Router>
