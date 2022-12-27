@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { FaPencilAlt } from "react-icons/fa";
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
@@ -14,6 +15,10 @@ export default function Posts() {
       .catch((err) => console.log(err));
   }, []);
 
+  const editPost = () => {
+    console.log("amma edit you");
+  };
+
   return (
     <div>
       {posts.map((post) => (
@@ -25,8 +30,11 @@ export default function Posts() {
               {post.creatorUsername}
             </em>
             <em href="#" class="card-link">
-              {post.createdAt}
+              {post.createdAt.substring(0, 10)}
             </em>
+            <br />
+            {window.localStorage.getItem("currentUser") ===
+              post.creatorUsername && <FaPencilAlt onClick={editPost} />}
           </div>
         </div>
       ))}
