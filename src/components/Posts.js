@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { FaPencilAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { BsFillPencilFill } from "react-icons/bs";
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
@@ -14,10 +15,6 @@ export default function Posts() {
       })
       .catch((err) => console.log(err));
   }, []);
-
-  const editPost = () => {
-    console.log("amma edit you");
-  };
 
   return (
     <div>
@@ -34,7 +31,16 @@ export default function Posts() {
             </em>
             <br />
             {window.localStorage.getItem("currentUser") ===
-              post.creatorUsername && <FaPencilAlt onClick={editPost} />}
+              post.creatorUsername && (
+              <Link
+                to={`/editpost/${post._id}`}
+                className="nav-link active"
+                aria-current="page"
+                href="#"
+              >
+                <BsFillPencilFill />
+              </Link>
+            )}
           </div>
         </div>
       ))}

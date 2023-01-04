@@ -39,7 +39,6 @@ export default function CreatePost() {
         </label>
         <textarea
           value={newPost.postText}
-          type="password"
           class="form-control"
           id="createPostContent"
           onChange={(e) => setNewPost({ ...newPost, postText: e.target.value })} // assigns current value to the object
